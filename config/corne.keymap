@@ -1,0 +1,322 @@
+/*
+ * Custom Corne / BÉPO 1.1rc2
+ *
+ * BASE : BÉPO personnalisé
+ * SYM  : programmation
+ * NAV  : navigation physique
+ *
+ * Host layout attendu :
+ *   BÉPO 1.1rc2
+ *
+ * 42 positions :
+ *   L01-L18  = gauche 3x6
+ *   R01-R18  = droite 3x6
+ *   L19-L21  = pouces gauche
+ *   R19-R21  = pouces droit
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+#define BASE 0
+#define SYM  1
+#define NAV  2
+
+/ {
+    behaviors {
+
+        /*
+         * Enter / SYM
+         *
+         * tap  -> Enter
+         * hold -> SYM
+         *
+         * Tap-preferred : important pour la frappe rapide.
+         */
+        enter_sym: enter_sym {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+
+            bindings = <&mo>, <&kp>;
+        };
+
+        /*
+         * GUI / AltGr
+         *
+         * tap  -> GUI
+         * hold -> Right Alt
+         *
+         * Linux : GUI / AltGr
+         * macOS : Cmd / Option
+         */
+        gui_altgr: gui_altgr {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+
+            flavor = "hold-preferred";
+            tapping-term-ms = <180>;
+
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+    keymap {
+
+        compatible = "zmk,keymap";
+
+        /*
+         * ============================================================
+         * BASE
+         * ============================================================
+         *
+         *       GAUCHE                         DROITE
+         *
+         *   Tab   B   É   P   O   È       ^   V   D   L   J   W
+         *   Esc   A   U   I   E   ,       C   T   S   R   N   M
+         *  Shift  À   Y   X   .   K       ’   Q   G   H   F   Z
+         *
+         *        Ctrl  Backspace Space   Enter/SYM NAV GUI/AltGr
+         */
+
+        base {
+            display-name = "BASE";
+
+            bindings = <
+
+                /* L01-L06 */
+                &kp TAB
+                &kp Q
+                &kp W
+                &kp E
+                &kp R
+                &kp T
+
+                /* R01-R06 */
+                &kp Y
+                &kp U
+                &kp I
+                &kp O
+                &kp P
+                &kp RIGHT_BRACKET
+
+                /* L07-L12 */
+                &kp ESC
+                &kp A
+                &kp S
+                &kp D
+                &kp F
+                &kp G
+
+                /* R07-R12 */
+                &kp H
+                &kp J
+                &kp K
+                &kp L
+                &kp SEMICOLON
+                &kp APOS
+
+                /* L13-L18 */
+                &kp LSHIFT
+                &kp Z
+                &kp X
+                &kp C
+                &kp V
+                &kp B
+
+                /* R13-R18 */
+                &kp N
+                &kp M
+                &kp COMMA
+                &kp PERIOD
+                &kp SLASH
+                &kp LEFT_BRACKET
+
+                /* L19-L21 : thumbs */
+                &kp LCTRL
+                &kp BACKSPACE
+                &kp SPACE
+
+                /* R19-R21 : thumbs */
+                &enter_sym SYM RET
+                &mo NAV
+                &gui_altgr RALT LGUI
+            >;
+        };
+
+
+        /*
+         * ============================================================
+         * SYM
+         * ============================================================
+         *
+         * Programmation.
+         *
+         *       GAUCHE                         DROITE
+         *
+         *    1   2   3   4   5   6       7   8   9   0   =   !
+         *    (   [   {   <   \   &       |   +   -   *   _   ;
+         *    )   ]   }   >   /   |       &   :   =   ?   ~   $
+         *
+         * Les caractères sont obtenus via les positions HID BÉPO
+         * 1.1rc2 + AltGr/Shift.
+         */
+
+        sym {
+            display-name = "SYM";
+
+            bindings = <
+
+                /* L01-L06 : chiffres */
+                &kp LS(N1)
+                &kp LS(N2)
+                &kp LS(N3)
+                &kp LS(N4)
+                &kp LS(N5)
+                &kp LS(N6)
+
+                /* R01-R06 : chiffres + = ! */
+                &kp LS(N7)
+                &kp LS(N8)
+                &kp LS(N9)
+                &kp LS(N0)
+                &kp EQUAL
+                &kp LS(Y)
+
+                /* L07-L12 */
+                &kp N4
+                &kp RA(N4)
+                &kp RA(X)
+                &kp RA(N2)
+                &kp RA(Z)
+                &kp RA(E)
+
+                /* R07-R12 */
+                &kp RA(Q)
+                &kp N7
+                &kp N8
+                &kp N0
+                &kp RA(LS(Q))
+                &kp LS(G)
+
+                /* L13-L18 */
+                &kp N5
+                &kp RA(N5)
+                &kp RA(C)
+                &kp RA(N3)
+                &kp RA(O)
+                &kp RA(Q)
+
+                /* R13-R18 */
+                &kp RA(E)
+                &kp LS(V)
+                &kp EQUAL
+                &kp LS(N)
+                &kp RA(B)
+                &kp GRAVE
+
+                /* pouces */
+                &trans
+                &trans
+                &trans
+
+                /* Enter/SYM, NAV, GUI/AltGr */
+                &trans
+                &trans
+                &trans
+            >;
+        };
+
+
+        /*
+         * ============================================================
+         * NAV
+         * ============================================================
+         *
+         * Navigation physique.
+         *
+         * Les quatre touches de repos de la main droite sont :
+         *
+         *              T   S   R   N
+         *              ←   ↓   ↑   →
+         *
+         * C'est volontairement basé sur la POSITION physique,
+         * pas sur les lettres H/J/K/L.
+         *
+         *       Home  PgUp  PgDn  End
+         *
+         *             ←    ↓    ↑    →
+         */
+
+        nav {
+            display-name = "NAV";
+
+            bindings = <
+
+                /* L01-L06 */
+                &trans
+                &kp HOME
+                &kp PG_UP
+                &kp PG_DN
+                &kp END
+                &trans
+
+                /* R01-R06 */
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+
+                /* L07-L12 */
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+
+                /* R07-R12
+                 *
+                 * C   T    S    R    N    M
+                 *     ←    ↓    ↑    → 
+                 */
+                &trans
+                &kp LEFT
+                &kp DOWN
+                &kp UP
+                &kp RIGHT
+                &trans
+
+                /* L13-L18 */
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+
+                /* R13-R18 */
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+
+                /* pouces */
+                &trans
+                &trans
+                &trans
+
+                /* Enter/SYM, NAV, GUI/AltGr */
+                &trans
+                &trans
+                &trans
+            >;
+        };
+    };
+};
