@@ -184,19 +184,19 @@
 // means inside real Vim, so it never fights the muscle memory you're
 // building for actual Vim motions.
 // ╭──────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
-// │ trns │     │     │     │     │     │   │ HOME│ DOWN│  UP │ END │ PGUP│     │
+// │ trns │ BT1 │ BT2 │ BT3 │     │     │   │ HOME│ DOWN│  UP │ END │ PGUP│     │
 // ├──────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
 // │ SHFT │     │     │     │     │     │   │ LEFT│ DOWN│  UP │ RGHT│ PGDN│     │
 // ├──────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-// │ CTRL │     │     │     │     │     │   │  gg │  G  │  dd │  yy │  p  │     │
+// │ CTRL │BTclr│     │     │     │     │   │  gg │  G  │  dd │  yy │  p  │     │
 // ╰──────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
 //                    │ ALT │     │ SPC │   │ ESC │     │ trns│
 //                    ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
         bindings = <
-   &trans    &trans &trans &trans &trans &trans        &kp HOME &kp DOWN &kp UP  &kp END   &kp PG_UP &trans
-   &kp LSHFT &trans &trans &trans &trans &trans        &kp LEFT &kp DOWN &kp UP  &kp RIGHT &kp PG_DN &trans
-   &kp LCTRL &trans &trans &trans &trans &trans        &vim_gg  &kp G    &vim_dd &vim_yy   &kp P     &trans
-                                  &kp LALT &trans &kp BP_SPACE  &kp ESC  &trans  &trans
+   &trans    &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &trans &trans        &kp HOME &kp DOWN &kp UP  &kp END   &kp PG_UP &trans
+   &kp LSHFT &trans       &trans       &trans       &trans &trans        &kp LEFT &kp DOWN &kp UP  &kp RIGHT &kp PG_DN &trans
+   &kp LCTRL &bt BT_CLR   &trans       &trans       &trans &trans        &vim_gg  &kp G    &vim_dd &vim_yy   &kp P     &trans
+                          &kp LALT     &trans       &kp BP_SPACE         &kp ESC  &trans   &trans
         >;
       };
   };
