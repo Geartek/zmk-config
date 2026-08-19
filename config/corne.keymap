@@ -106,9 +106,10 @@
 
       Bepo {
 // Standard BÉPO 1.1 letters, with 3 changes from stock:
-//  - ESC replaces Shift's spot (tap = ESC, hold = Shift - nothing is lost)
+//  - ESC replaces Shift's spot (tap = ESC, hold = LGUI - nothing is lost)
 //  - W moves to Ç's old spot (bottom-right pinky), plain V takes its place
 //  - Ç is dropped
+//  - BS/VM (right thumb): tap = Backspace, hold = VIM layer
 // Everything else - all 30 core letters - is untouched, so muscle memory
 // for the letters stays exactly where it already is.
 // ╭──────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
@@ -118,13 +119,13 @@
 // ├──────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
 // │ CTRL │  À  │  Y  │  X  │  .  │  K  │   │  '  │  Q  │  G  │  H  │  F  │  W  │
 // ╰──────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
-//                    │ Sym │  ⇧  │ SPC │   │ ENT │AltGr│ VIM │
+//                    │  ⇧  │ SPC │ Sym │   │ ENT │BS/VM│AltGr│
 //                    ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
          bindings = <
    &kp TAB       &kp BP_B             &kp BP_E_ACUTE &kp BP_P &kp BP_O     &kp BP_E_GRAVE     &kp BP_CARET &kp BP_V &kp BP_D &kp BP_L &kp BP_J &kp BP_Z
-   &kp ESC       &kp BP_A             &kp BP_U       &kp BP_I &kp BP_E     &kp BP_COMMA       &kp BP_C     &kp BP_T &kp BP_S &kp BP_R &kp BP_N &kp BP_M
+   &hm LGUI ESC  &kp BP_A             &kp BP_U       &kp BP_I &kp BP_E     &kp BP_COMMA       &kp BP_C     &kp BP_T &kp BP_S &kp BP_R &kp BP_N &kp BP_M
    &kp LCTRL     &mhm LGUI BP_A_GRAVE &kp BP_Y       &kp BP_X &kp BP_DOT   &kp BP_K           &kp BP_RSQ   &kp BP_Q &kp BP_G &kp BP_H &kp BP_F &kp BP_W
-                                                     &mo 1    &kp LSHIFT   &kp BP_SPACE       &kp RET      &kp RALT &mo 3
+                                                     &kp LSHIFT &kp BP_SPACE &mo 1            &kp RET      &slt 3 BSPC &kp RALT
          >;
       };
 
