@@ -113,19 +113,19 @@
 // Everything else - all 30 core letters - is untouched, so muscle memory
 // for the letters stays exactly where it already is.
 // ╭──────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
-// │  TAB │  B  │  É  │  P  │  O  │  È  │   │  ^  │  V  │  D  │  L  │  J  │  Z  │
+// │  TAB │  B  │  É  │  P  │  O  │  È  │   │  ^  │  V  │  D  │  L  │  J  │  W  │
 // ├──────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
 // │ ESC  │  A  │  U  │  I  │  E  │  ,  │   │  C  │  T  │  S  │  R  │  N  │  M  │
 // ├──────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-// │ CTRL │  À  │  Y  │  X  │  .  │  K  │   │  '  │  Q  │  G  │  H  │  F  │  W  │
+// │ CTRL │À/GUI│  Y  │  X  │  .  │  K  │   │  '  │  Q  │  G  │  H  │  F  │  Z  │
 // ╰──────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
-//                    │  ⇧  │ SPC │ Sym │   │ ENT │BS/VM│AltGr│
+//                    │ Sym │  ⇧  │ SPC │   │ ENT │BS/VM│AltGr│
 //                    ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
          bindings = <
-   &kp TAB       &kp BP_B             &kp BP_E_ACUTE &kp BP_P &kp BP_O     &kp BP_E_GRAVE     &kp BP_CARET &kp BP_V &kp BP_D &kp BP_L &kp BP_J &kp BP_Z
+   &kp TAB       &kp BP_B             &kp BP_E_ACUTE &kp BP_P &kp BP_O     &kp BP_E_GRAVE     &kp BP_CARET &kp BP_V &kp BP_D &kp BP_L &kp BP_J &kp BP_W
    &hm LGUI ESC  &kp BP_A             &kp BP_U       &kp BP_I &kp BP_E     &kp BP_COMMA       &kp BP_C     &kp BP_T &kp BP_S &kp BP_R &kp BP_N &kp BP_M
-   &kp LCTRL     &mhm LGUI BP_A_GRAVE &kp BP_Y       &kp BP_X &kp BP_DOT   &kp BP_K           &kp BP_RSQ   &kp BP_Q &kp BP_G &kp BP_H &kp BP_F &kp BP_W
-                                                     &kp LSHIFT &kp BP_SPACE &mo 1            &kp RET      &slt 3 BSPC &kp RALT
+   &kp LCTRL     &mhm LGUI BP_A_GRAVE &kp BP_Y       &kp BP_X &kp BP_DOT   &kp BP_K           &kp BP_RSQ   &kp BP_Q &kp BP_G &kp BP_H &kp BP_F &kp BP_Z
+                                                     &mo 1 &kp LSHIFT &kp BP_SPACE            &kp RET      &slt 3 BSPC &kp RALT
          >;
       };
 
@@ -146,13 +146,13 @@
 // ├──────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
 // │ CTRL │  <  │  >  │  _  │ PGUP│ PGDN│   │     │     │     │     │     │     │
 // ╰──────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
-//                    │ GUI │     │ SPC │   │ ENT │SHFT │LALT │
+//                    │     │     │     │   │ ENT │SHFT │LALT │
 //                    ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
         bindings = <
    &kp BP_DLLR &kp BP_DQT &kp BP_LAQUO &kp BP_RAQUO &kp BP_LPAR &kp BP_RPAR    &kp BP_AT &kp BP_PLUS &kp BP_MINUS &kp BP_FSLH &kp BP_STAR &kp BP_EQUAL
    &kp LSHFT   &kp BP_LBKT &kp BP_RBKT &kp BP_LBRC  &kp BP_RBRC &kp DEL        &kp LEFT  &kp DOWN    &kp UP       &kp RIGHT   &kp HOME    &kp END
    &kp LCTRL   &kp BP_LT   &kp BP_GT   &kp BP_UNDER &kp PG_UP   &kp PG_DN      &trans    &trans      &trans       &trans      &trans      &trans
-                                       &kp LGUI     &trans      &kp BP_SPACE  &kp RET    &kp RSHFT   &kp LALT
+                                       &trans     &trans      &trans  &kp RET    &kp RSHFT   &kp LALT
         >;
       };
 
